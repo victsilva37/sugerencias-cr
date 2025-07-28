@@ -1,0 +1,65 @@
+#batallas-container{
+    background-color: sienna;
+    overflow-y: auto;
+    width: 60%;
+    max-height: 700px; /* Ajusta este valor según lo que necesites */
+}
+    
+    .info-batalla{
+        background-color: rgb(107, 80, 80);
+        width: 80%;
+        padding: 10px;
+        margin: 20px;
+        height: auto;
+    }
+
+    
+
+/*RESULTADO*/
+
+    .win-batalla{
+        color: rgb(5, 216, 23);
+        font-weight: bold;
+        text-align: start;
+    }
+
+    .lose-batalla{
+        color: red;
+        font-weight: bold;
+        text-align: start;
+    }
+
+
+/*NOMBRE DEL JUGADOR (YO) - OPONENTE*/
+
+    .info-batalla .p-jugadores {
+        color: rgb(255, 255, 255);
+    }
+
+
+/*CARTAS DEL JUGADOR (YO)*/
+
+    #cards-container{
+        background-color: blue;
+        display: flex;
+        justify-content: center;
+        gap: 20px
+    }
+
+        /* Mis cartas */
+        .cartas-blue-batalla{
+            background-color: yellow;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            flex-wrap: wrap;
+            width: 300px;
+        }
+
+        /* Cartas del oponente */
+        .cartas-red-batalla{
+            background-color: rgb(175, 88, 30);
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            flex-wrap: wrap;
+            width: 300px;
+        }
