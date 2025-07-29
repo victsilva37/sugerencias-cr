@@ -3,11 +3,16 @@ import './styles_batallas.css'
 
 //Importar función personalizada para obtener batallas
 import useBatallas from './func_batallas';
+import { BatallasProps } from '../../../interfaces/BatallasProps';
 
-export default function Batallas() {
+export default function Batallas({ modosSeleccionados, cantidad }: BatallasProps) {
 
   // Usar el hook personalizado para obtener batallas y estado de carga
   const {batallas, loading} = useBatallas();
+
+  const batallasFiltradas = batallas
+    .filter(b => modosSeleccionados.length === 0 || modosSeleccionados.includes(b.type))
+    .slice(0, parseInt(cantidad)); // solo para valores como "10", "20", "50"
 
   // Si aún se están cargando las batallas, mostrar un mensaje de carga
   if (loading) return <p>Cargando batallas...</p>;
@@ -16,25 +21,27 @@ export default function Batallas() {
   return (
     <div>
       <h1>Batallas</h1>
-      {batallas.length > 0 ? (
+      {batallasFiltradas.length > 0 ? (
         <ul id='batallas-container'>
-          {batallas.map((batalla, i) => (
+          {batallasFiltradas.map((b, i) => (
             <div key={i}>
               <div className="info-batalla">
+                {/*TIPO DE BATALLA*/}
+                <p className='p-tipo-batalla'>{b.type}</p>
 
                 {/*RESULTADO*/}
 
                     <p className={
                       // Determinar el color de acuerdo al resultado de la batalla basado en las coronas
-                      typeof batalla.team?.[0]?.crowns === 'number' && typeof batalla.opponent?.[0]?.crowns === 'number'
-                        ? batalla.team[0].crowns > batalla.opponent[0].crowns
+                      typeof b.team?.[0]?.crowns === 'number' && typeof b.opponent?.[0]?.crowns === 'number'
+                        ? b.team[0].crowns > b.opponent[0].crowns
                           ? 'win-batalla'
                           : 'lose-batalla'
                         : 'unknown-result'
                     }>
                       {/*Mostrar el resultado de la batalla*/}
-                      {typeof batalla.team?.[0]?.crowns === 'number' && typeof batalla.opponent?.[0]?.crowns === 'number'
-                      ? batalla.team[0].crowns > batalla.opponent[0].crowns
+                      {typeof b.team?.[0]?.crowns === 'number' && typeof b.opponent?.[0]?.crowns === 'number'
+                      ? b.team[0].crowns > b.opponent[0].crowns
                           ? 'VICTORIA'
                           : 'DERROTA'
                         : 'unknown-result'}
@@ -42,8 +49,8 @@ export default function Batallas() {
 
                 {/*NOMBRE DEL JUGADOR (YO) - OPONENTE*/}
 
-                  <p className='p-jugadores'>{batalla.team?.[0]?.name || 'Desconocido'} {batalla.team?.[0]?.crowns}- 
-                      {batalla.opponent?.[0]?.crowns} {batalla.opponent?.[0]?.name || 'Desconocido'}</p>
+                  <p className='p-jugadores'>{b.team?.[0]?.name || 'Desconocido'} {b.team?.[0]?.crowns}- 
+                      {b.opponent?.[0]?.crowns} {b.opponent?.[0]?.name || 'Desconocido'}</p>
 
 
                 {/*CARTAS DE LA PARTIDA*/}
@@ -52,7 +59,7 @@ export default function Batallas() {
 
                     {/* Mis cartas */}
                     <div className="cartas-blue-batalla">
-                      {batalla.team?.[0]?.cards?.map((card, j) => (
+                      {b.team?.[0]?.cards?.map((card, j) => (
                         <div key={j} className="carta">
                           <img
                             src={
@@ -69,7 +76,7 @@ export default function Batallas() {
 
                     {/* Cartas del oponente */}
                     <div className="cartas-red-batalla">
-                      {batalla.opponent?.[0]?.cards?.map((card, j) => (
+                      {b.opponent?.[0]?.cards?.map((card, j) => (
                         <div key={j} className="carta">
                           <img
                             src={
