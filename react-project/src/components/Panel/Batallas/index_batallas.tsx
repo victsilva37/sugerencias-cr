@@ -5,14 +5,14 @@ import './styles_batallas.css'
 import useBatallas from './func_batallas';
 import { BatallasProps } from '../../../interfaces/BatallasProps';
 
-export default function Batallas({ modosSeleccionados, cantidad }: BatallasProps) {
+export default function Batallas({ modosSeleccionados}: BatallasProps) {
 
   // Usar el hook personalizado para obtener batallas y estado de carga
   const {batallas, loading} = useBatallas();
 
   const batallasFiltradas = batallas
     .filter(b => modosSeleccionados.length === 0 || modosSeleccionados.includes(b.type))
-    .slice(0, parseInt(cantidad)); // solo para valores como "10", "20", "50"
+
 
   // Si aún se están cargando las batallas, mostrar un mensaje de carga
   if (loading) return <p>Cargando batallas...</p>;

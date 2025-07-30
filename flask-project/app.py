@@ -1,11 +1,12 @@
-from flask import Flask, jsonify
+from flask import Flask, jsonify, request
 from flask_cors import CORS
 from clash_api import fetch_from_clashroyale_api
+from gpt import analizar_batallas
 
 app = Flask(__name__)
-CORS(app)  # permite peticiones desde localhost:3000
+CORS(app, origins=["*"])# permite peticiones desde localhost:3000
 
-#Endpoint para obtener información de un jugador
+# Endpoint para obtener información de un jugador
 @app.route('/players/<player_tag>', methods=['GET'])
 def get_player(player_tag):
     tag_encoded = f"%23{player_tag.upper()}"
@@ -38,7 +39,7 @@ def get_battlelog(player_tag):
             battles.append({
                 "type": b.get("type"),
                 "battleTime": b.get("battleTime"),
-                "gameMode": b.get("gameMode"),  # <-- objeto completo
+                "gameMode": b.get("gameMode"),  # objeto completo
                 "arena": b.get("arena", {}).get("name"),
                 "deckSelection": b.get("deckSelection"),
                 "isLadderTournament": b.get("isLadderTournament"),
@@ -51,5 +52,20 @@ def get_battlelog(player_tag):
 
     return jsonify(battles)
 
+@app.route("/analizar", methods=["POST"])
+def analizar():
+    data = request.get_json()
+    batallas = data.get("batallas", [])
+    modos_juego = data.get("modos_juego", [])  # Esto viene del panel de control
+    objetivo = data.get("objetivo", "Mejorar en PvP")  # Puedes poner un valor por defecto
+
+    sugerencia = analizar_batallas(batallas, modos_juego, objetivo)
+    return jsonify({"sugerencia": sugerencia})
+
+
+
 if __name__ == '__main__':
     app.run(debug=True)
+
+
+

@@ -1,54 +1,63 @@
-//Importación de CSS
 import './styles_control.css';
 import useControl from './func_control';
 import { ControlProps } from '../../../interfaces/ControlProps';
 
-export default function Control({ seleccionados, setSeleccionados, cantidad, setCantidad }: ControlProps) {
+export default function Control({ seleccionados, setSeleccionados }: ControlProps) {
+    const { batallas, analizarBatallas, sugerencia, objetivo, setObjetivo } = useControl();
 
-    const { batallas } = useControl();
-    // Extrae tipos únicos
+    // Obtener tipos únicos de modos de juego para los checkboxes
     const tiposDeJuego = [...new Set(batallas.map(b => b.type))];
 
     const handleCheck = (tipo: string) => {
-    if (seleccionados.includes(tipo)) {
-      setSeleccionados(seleccionados.filter(t => t !== tipo));
-    } else {
-      setSeleccionados([...seleccionados, tipo]);
-    }
-  };
+        if (seleccionados.includes(tipo)) {
+            setSeleccionados(seleccionados.filter(t => t !== tipo));
+        } else {
+            setSeleccionados([...seleccionados, tipo]);
+        }
+    };
 
     return (
         <div>
             <h1>Control Panel</h1>
-                <form>
-                    <fieldset>
-                    <legend><strong>Modos de juego a analizar:</strong></legend>
+            <form>
+                <fieldset>
+                    <strong>Modos de juego a analizar:</strong>
                     {tiposDeJuego.map(tipo => (
-                        <label key={tipo}>
-                        <input
-                            type="checkbox"
-                            checked={seleccionados.includes(tipo)}
-                            onChange={() => handleCheck(tipo)}
-                        />
-                        {tipo}
+                        <label key={tipo} style={{ display: "block", margin: "5px 0" }}>
+                            <input
+                                type="checkbox"
+                                checked={seleccionados.includes(tipo)}
+                                onChange={() => handleCheck(tipo)}
+                            />
+                            {tipo}
                         </label>
                     ))}
+                    <br />
 
                     <div>
                         <label>
-                        Cantidad de partidas a analizar:
-                        <select value={cantidad} onChange={(e) => setCantidad(e.target.value)}>
-                            <option value="5">Últimas 5 partidas</option>
-                            <option value="10">Últimas 10 partidas</option>
-                            <option value="20">Últimas 20 partidas</option>
-                            <option value="7d">Últimos 7 días</option>
-                            <option value="14d">Últimos 14 días</option>
-                        </select>
+                            Objetivo del análisis
+                            <select value={objetivo} onChange={e => setObjetivo(e.target.value)}>
+                                <option value="mejorar-ataque">Mejorar ataque</option>
+                                <option value="mejorar-defensa">Mejorar defensa</option>
+                                <option value="optimizar-rotación">Optimizar rotación</option>
+                                <option value="balancear-mazo">Balancear el mazo</option>
+                                <option value="tomar-decisiones">Toma de decisiones</option>
+                            </select>
                         </label>
                     </div>
-                    </fieldset>
-                </form>
-            
+                </fieldset>
+
+                <button type="button" onClick={analizarBatallas}>
+                    Analizar
+                </button>
+            </form>
+
+            {sugerencia && (
+                <div className="sugerencia" style={{ marginTop: "20px" }}>
+                    <strong>Sugerencia IA:</strong> {sugerencia}
+                </div>
+            )}
         </div>
     );
 }
