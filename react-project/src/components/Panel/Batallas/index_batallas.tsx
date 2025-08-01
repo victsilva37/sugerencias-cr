@@ -26,8 +26,10 @@ export default function Batallas({ modosSeleccionados}: BatallasProps) {
           {batallasFiltradas.map((b, i) => (
             <div key={i}>
               <div className="info-batalla">
+
                 {/*TIPO DE BATALLA*/}
-                <p className='p-tipo-batalla'>{b.type}</p>
+
+                  <p className='p-tipo-batalla'>{b.type}</p>
 
                 {/*RESULTADO*/}
 
@@ -46,6 +48,7 @@ export default function Batallas({ modosSeleccionados}: BatallasProps) {
                           : 'DERROTA'
                         : 'unknown-result'}
                     </p>
+
 
                 {/*NOMBRE DEL JUGADOR (YO) - OPONENTE*/}
 

@@ -18,25 +18,34 @@ export default function Control({ seleccionados, setSeleccionados }: ControlProp
 
     return (
         <div>
+            
             <h1>Control Panel</h1>
             <form>
                 <fieldset>
-                    <strong>Modos de juego a analizar:</strong>
-                    {tiposDeJuego.map(tipo => (
-                        <label key={tipo} style={{ display: "block", margin: "5px 0" }}>
-                            <input
-                                type="checkbox"
-                                checked={seleccionados.includes(tipo)}
-                                onChange={() => handleCheck(tipo)}
-                            />
-                            {tipo}
-                        </label>
-                    ))}
-                    <br />
 
-                    <div>
-                        <label>
-                            Objetivo del análisis
+                    {/* SECCIÓN DE MODOS DE JUEGO */}
+
+                        <strong>Modos de juego a analizar:</strong>
+
+                        {tiposDeJuego.map(tipo => (
+                            <label id='lbl-modos' key={tipo}>
+                                <input
+                                    type="checkbox"
+                                    checked={seleccionados.includes(tipo)}
+                                    onChange={() => handleCheck(tipo)}
+                                />
+                                {tipo}
+                            </label>
+                        ))}
+                        <br />
+
+
+                    {/*SECCIÓN DE OBJETIVO DEL ANÁLISIS*/}
+
+                         <div>
+
+                            <label>Objetivo del análisis</label>
+
                             <select value={objetivo} onChange={e => setObjetivo(e.target.value)}>
                                 <option value="mejorar-ataque">Mejorar ataque</option>
                                 <option value="mejorar-defensa">Mejorar defensa</option>
@@ -44,8 +53,9 @@ export default function Control({ seleccionados, setSeleccionados }: ControlProp
                                 <option value="balancear-mazo">Balancear el mazo</option>
                                 <option value="tomar-decisiones">Toma de decisiones</option>
                             </select>
-                        </label>
-                    </div>
+                            
+                        </div>
+
                 </fieldset>
 
                 <button type="button" onClick={analizarBatallas}>

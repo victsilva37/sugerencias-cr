@@ -2,3 +2,12 @@ fieldset{
      border: 1px solid #ccc;
      padding: 1rem;
 }
+
+/* SECCIÓN DE MODOS DE JUEGO */
+
+     fieldset #lbl-modos {
+          display: block;
+          margin: 5px 0 
+     }
+
+

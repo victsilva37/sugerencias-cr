@@ -1,4 +1,6 @@
 #index-menu-container {
   background-color: #d30c0c;
+  margin: 0;
+  padding: 2px;
   color: black;
 }

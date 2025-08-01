@@ -9,11 +9,12 @@ export default function Home() {
         {/* Layout: Menu */}
         <Menu/>
 
+        {/* Component: InputTag */}
+        <InputTag/>
+
         {/* Component: Banner */}
         <Banner/>
 
-        {/* Component: InputTag */}
-        <InputTag/>
 
     </div>
     
