@@ -1,6 +1,9 @@
 //Importar el CSS
 import './styles_batallas.css'
 
+//Importar imágenes de tipos de batallas
+import trofeo_img from '../../../assets/img/Batallas/trofeo.webp';
+import path_img from '../../../assets/img/Batallas/path_legends.webp';
 //Importar función personalizada para obtener batallas
 import useBatallas from './func_batallas';
 import { BatallasProps } from '../../../interfaces/BatallasProps';
@@ -8,33 +11,40 @@ import { BatallasProps } from '../../../interfaces/BatallasProps';
 export default function Batallas({ modosSeleccionados}: BatallasProps) {
 
   // Usar el hook personalizado para obtener batallas y estado de carga
-  const {batallas, loading} = useBatallas();
+  const {batallas} = useBatallas();
 
   const batallasFiltradas = batallas
     .filter(b => modosSeleccionados.length === 0 || modosSeleccionados.includes(b.type))
 
 
-  // Si aún se están cargando las batallas, mostrar un mensaje de carga
-  if (loading) return <p>Cargando batallas...</p>;
 
   //Visualizar las batallas obtenidas
   return (
     <div>
-      <h1>Batallas</h1>
+      
       {batallasFiltradas.length > 0 ? (
+        
         <ul id='batallas-container'>
+         
           {batallasFiltradas.map((b, i) => (
             <div key={i}>
+              
               <div className="info-batalla">
 
-                {/*TIPO DE BATALLA*/}
+    
+                {/*RESULTADO DE LA BATALLA*/}
 
-                  <p className='p-tipo-batalla'>{b.type}</p>
+                  <div id='resultado-content'>
 
-                {/*RESULTADO*/}
+                    {/* Mostrar el tipo de batalla con su respectiva imagen */}
+                    <img id='img-tipo-batalla' src={b.type === 'pathofLegends' ? trofeo_img : path_img} alt="" />
 
+                    {/* Mostrar la cantidad de coronas de cada jugador */}
+                    <p className='p-jugadores'>{b.team?.[0]?.name || 'Desconocido'} {b.team?.[0]?.crowns}-  
+                       {b.opponent?.[0]?.crowns} {b.opponent?.[0]?.name || 'Desconocido'}</p>
+
+                     {/* Determinar el color de acuerdo al resultado de la batalla basado en las coronas */}
                     <p className={
-                      // Determinar el color de acuerdo al resultado de la batalla basado en las coronas
                       typeof b.team?.[0]?.crowns === 'number' && typeof b.opponent?.[0]?.crowns === 'number'
                         ? b.team[0].crowns > b.opponent[0].crowns
                           ? 'win-batalla'
@@ -48,14 +58,10 @@ export default function Batallas({ modosSeleccionados}: BatallasProps) {
                           : 'DERROTA'
                         : 'unknown-result'}
                     </p>
-
-
-                {/*NOMBRE DEL JUGADOR (YO) - OPONENTE*/}
-
-                  <p className='p-jugadores'>{b.team?.[0]?.name || 'Desconocido'} {b.team?.[0]?.crowns}- 
-                      {b.opponent?.[0]?.crowns} {b.opponent?.[0]?.name || 'Desconocido'}</p>
-
-
+                    
+                  </div>
+                   
+                  
                 {/*CARTAS DE LA PARTIDA*/}
 
                   <div id='cards-container'>
@@ -71,8 +77,9 @@ export default function Batallas({ modosSeleccionados}: BatallasProps) {
                                 : card.iconUrls.medium
                             }
                             alt={card.name}
-                            width={50}
                           />
+                          <br />
+                          <small>Nivel {card.level}</small>
                         </div>
                       ))}
                     </div>
@@ -90,6 +97,8 @@ export default function Batallas({ modosSeleccionados}: BatallasProps) {
                             alt={card.name}
                             width={50}
                           />
+                          <br />
+                           <small>Nivel {card.level}</small>
                         </div>
                       ))}
                     </div>

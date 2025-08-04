@@ -1,0 +1,116 @@
+#batallas-container{
+    background-color: sienna;
+    overflow-y: auto;
+    width: 100%;
+    max-height: 700px; /* Ajusta este valor según lo que necesites */
+}
+    
+p, small{
+    font-family: 'Supercell Magic';
+}
+    
+
+/*TITULO DE LA BATALLA*/
+#batallas-container .batalla-titulo {
+    position: sticky;
+    top: 0;
+    background-color: rgb(206, 195, 195);
+    font-family: 'Supercell Magic';
+    width: 100%;
+    z-index: 10;
+    padding: 10px;
+    text-align: center;
+}
+
+
+/*INFORMACION DE LA BATALLA*/
+
+    .info-batalla{
+        background-color: rgb(107, 80, 80);
+        width: 90%;
+        height: auto;
+        margin: 20px;
+        padding: 5px;
+        border-radius: 10px;
+        box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+    }
+
+    .info-batalla #img-tipo-batalla{
+        width: 50px;
+        height: 50px;
+    }
+
+  
+    /*RESULTADO DE LA BATALLA*/
+
+        #resultado-content{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 5px;
+        }
+
+            .win-batalla{
+                color: rgb(5, 216, 23);
+                font-weight: bold;
+                text-align: start;
+            }
+
+            .lose-batalla{
+                color: red;
+                font-weight: bold;
+                text-align: start;
+            }
+
+            .info-batalla .p-jugadores {
+                color: rgb(255, 255, 255);
+                font-size: 15px;
+            }
+
+
+    /*CARTAS DE LA PARTIDA*/
+
+        #cards-container{
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+            /* Mis cartas */
+            .cartas-blue-batalla{
+                background-color: rgb(15, 111, 201);
+                display: grid;
+                grid-template-columns: repeat(4, 1fr);
+                flex-wrap: wrap;
+                width: 500px;
+                padding: 10px;
+            }
+
+            .cartas-blue-batalla img{
+                width: 100px;
+            }
+
+            .cartas-blue-batalla small{
+                color: white;
+                font-size: 12px;
+            }
+
+            
+            /* Cartas del oponente */
+            .cartas-red-batalla{
+                background-color: rgb(212, 15, 41);
+                display: grid;
+                grid-template-columns: repeat(4, 1fr);
+                flex-wrap: wrap;
+                width: 500px;
+                padding: 10px;
+            }
+
+            .cartas-red-batalla img{
+                width: 100px;
+            }
+
+            .cartas-red-batalla small{
+                color: white;
+                font-size: 12px;
+            }

@@ -1,9 +1,12 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 export default function useInputTag() {
     const [tag, setTag] = useState("");
     const navigate = useNavigate();
+    
+
+    var habilitarBotonConf = false;
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -18,9 +21,10 @@ export default function useInputTag() {
             }
 
             const data = await res.json();
-            alert(`Bienvenido ${data.expLevel}`);
+            alert(`Jugador ${data.name} encontrado con éxito!`);
             localStorage.setItem("playerTag", cleanedTag); 
-            navigate("/panel");
+            habilitarBotonConf = true;
+            navigate("/");
             
         } catch (error) {
             console.error(error);
@@ -28,9 +32,12 @@ export default function useInputTag() {
         }
     };
 
+
+
     return {
         tag,
         setTag,
+        habilitarBotonConf,
         handleSubmit
     }
 }

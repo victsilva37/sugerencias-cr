@@ -3,11 +3,14 @@ import "./styles_input_tag.css";
 
 //Importar función personalizada para manejar el tag de entrada
 import useInputTag from "./func_input_tag";
+import Control from "../Control/index_control";
+import { useState } from "react";
 
 export default function InputTag() {
 
     // Usar el hook personalizado para manejar el tag y la lógica de envío
-    const { tag, setTag, handleSubmit } = useInputTag();
+    const { tag, setTag, habilitarBotonConf, handleSubmit } = useInputTag();
+    const [seleccionados, setSeleccionados] = useState<string[]>([]);
     
     // Renderizar el formulario de entrada de tag
     return (
@@ -25,7 +28,47 @@ export default function InputTag() {
                 />
                 
 
-                <button type="submit" className="btn btn-primary">Avanzar</button>
+                <button type="submit" className="btn btn-primary">Buscar</button>
+
+       
+                    <button
+                        type="button"
+                        id='btn-configuraciones'
+                        className="btn btn-primary"
+                        disabled={habilitarBotonConf}
+                        onClick={() => {
+                            const dialog = document.getElementById('dialog-configuraciones') as HTMLDialogElement | null;
+                            if (dialog && !dialog.open) {
+                                dialog.showModal();
+                            }
+                        }}
+                    >
+                        Configuraciones
+                    </button>
+         
+
+                <dialog id="dialog-configuraciones">
+                        
+                    <Control
+                            seleccionados={seleccionados}
+                            setSeleccionados={setSeleccionados}      
+                        />
+
+                    <button 
+                        type="button" 
+                        className='btn btn-danger' 
+                        onClick={() => {
+                            const dialog = document.getElementById('dialog-configuraciones') as HTMLDialogElement | null;
+                            if (dialog && dialog.open) {
+                                dialog.close();
+                            }
+                        }}
+                        >
+                        Cerrar
+                    </button>
+
+                </dialog>
+                
             </form>
         </div>
     );

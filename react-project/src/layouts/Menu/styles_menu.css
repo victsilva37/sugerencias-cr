@@ -1,6 +1,22 @@
 #index-menu-container {
-  background-color: #d30c0c;
+  background-color: #4067B2;
   margin: 0;
-  padding: 2px;
   color: black;
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+#index-menu-container img{
+  width: 150px;
+  height: 100px;
+  object-fit: contain;
 }

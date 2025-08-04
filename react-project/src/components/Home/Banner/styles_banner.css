@@ -1,34 +1,28 @@
 #banner-container{
-    background-color: rgb(206, 206, 206);
-    padding: 20px;
+    width: 100%;
+    height: auto;
 }
 
 /* SECCIÓN INFORMACIÓN */
 
-    #info-container{
-        display: flex;
-        justify-content: center;
-        gap: 20px;
-        align-items: center;
-        flex-wrap: wrap;
-    }
-
-    #info-container .card{
-        width: 400px;  
-        height: 500px; 
-    }
-
-    #info-container img{
+    #banner-container img{
         width: 100%;
-        max-height: 300px;
+        max-height: 400px;
         align-self: center;
     }
 
-    #info-container p{
-        font-size: 14px;
-        color: #333;
-        font-weight: bold;
-        text-align: justify;
-        text-transform: uppercase;
-        margin-top: 10px;
+    #banner-container .carousel-caption{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;   
     }
+
+    #banner-container .carousel-caption h5{
+        font-family: 'Supercell Magic';
+        font-size: 20px;  
+        color: #fff;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+

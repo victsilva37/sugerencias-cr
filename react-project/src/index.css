@@ -1,6 +1,13 @@
 body{
-    background-image: url('./assets/fondo.png');
+    background-image: url('./assets/img/fondo.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat ;
+}
+
+@font-face {
+  font-family: 'Supercell Magic';
+  src: url('./assets/fonts/You_Blockhead.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
 }

@@ -1,0 +1,41 @@
+#modos-content {
+     background-color: rgb(54, 77, 44);
+     display: flex;
+     justify-content: center;
+     gap: 60px;
+ }
+
+#modos-content h6 {
+     font-family: 'Supercell Magic';
+     color: rgb(0, 0, 0);
+ }
+
+ #modos-content div #modos-checkbox {
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     gap: 10px;
+     width: 100%;
+     height: 100%;
+ }
+
+ #modos-content div #modos-checkbox label {
+     color: white;
+     text-align: center;
+     margin: auto;
+ }
+
+#objetivo-content{
+     width: 100%;
+     display: flex;
+     justify-content: start;
+     align-items: center;
+     flex-direction: column;
+     gap: 10px
+}
+
+#objetivo-content h6{
+     font-family: 'Supercell Magic';
+     color: rgb(0, 0, 0);
+}
+

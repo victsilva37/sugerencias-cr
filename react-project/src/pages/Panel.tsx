@@ -1,6 +1,6 @@
 import { useState } from "react";
-import Batallas from "../components/Panel/Batallas/index_batallas";
-import Control from "../components/Panel/Control/index_control";
+import Batallas from "../components/Home/Batallas/index_batallas";
+import Control from "../components/Home/Panel/index_control";
 // import Menu from "../layouts/Menu/index_menu";
 
 export default function Panel() {
@@ -10,14 +10,14 @@ export default function Panel() {
         <div style={{display: 'flex'}}>
             {/* <Menu/> */}
 
-            <Batallas
+            {/* <Batallas
                 modosSeleccionados={seleccionados}
-            />
+            /> */}
 
-            <Control
+            {/* <Control
                 seleccionados={seleccionados}
                 setSeleccionados={setSeleccionados}      
-            />
+            /> */}
 
 
         </div>
