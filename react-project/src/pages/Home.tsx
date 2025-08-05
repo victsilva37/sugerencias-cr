@@ -22,6 +22,8 @@ export default function Home() {
                 modosSeleccionados={seleccionados}
           />
 
+        
+
 
     </div>
     

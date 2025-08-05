@@ -5,6 +5,9 @@ export default function useControl() {
     const [batallas, setBatallas] = useState<Batalla[]>([]);
     const [seleccionados, setSeleccionados] = useState<string[]>([]);
     const [objetivo, setObjetivo] = useState<string>("mejorar-ataque");
+    const [tipoSugerencia, setTipoSugerencia] = useState<string>("tactica");
+    const [analisisMazo, setAnalisisMazo] = useState<string>("el-mas-usado");
+    const [nivelAnalisis, setNivelAnalisis] = useState<string>("lenguaje-simple");
     const [sugerencia, setSugerencia] = useState<string | null>(null);
 
     useEffect(() => {
@@ -50,6 +53,9 @@ export default function useControl() {
             batallas: partidasFiltradas,
             modos_juego: seleccionados,
             objetivo,
+            tipoSugerencia,
+            analisisMazo,
+            nivelAnalisis
         };
 
         try {
@@ -80,5 +86,11 @@ export default function useControl() {
         setSeleccionados,
         objetivo,
         setObjetivo,
+        tipoSugerencia,
+        setTipoSugerencia,
+        analisisMazo,
+        setAnalisisMazo,
+        nivelAnalisis,
+        setNivelAnalisis
     };
 }

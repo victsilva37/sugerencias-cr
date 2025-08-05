@@ -37,7 +37,7 @@ export default function Batallas({ modosSeleccionados}: BatallasProps) {
                   <div id='resultado-content'>
 
                     {/* Mostrar el tipo de batalla con su respectiva imagen */}
-                    <img id='img-tipo-batalla' src={b.type === 'pathofLegends' ? trofeo_img : path_img} alt="" />
+                    <img id='img-tipo-batalla' src={b.type === 'pathOfLegend' ? path_img : trofeo_img} alt="" />
 
                     {/* Mostrar la cantidad de coronas de cada jugador */}
                     <p className='p-jugadores'>{b.team?.[0]?.name || 'Desconocido'} {b.team?.[0]?.crowns}-  

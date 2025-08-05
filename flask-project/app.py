@@ -57,9 +57,12 @@ def analizar():
     data = request.get_json()
     batallas = data.get("batallas", [])
     modos_juego = data.get("modos_juego", [])  # Esto viene del panel de control
-    objetivo = data.get("objetivo", "Mejorar en PvP")  # Puedes poner un valor por defecto
+    objetivo = data.get("objetivo", "mejorar-ataque")  # Puedes poner un valor por defecto
+    tipoSugerencia = data.get("tipoSugerencia", "tactica")
+    analisisMazo = data.get("analisisMazo", "el-mas-usado")
+    nivelAnalisis = data.get("nivelAnalisis", "lenguaje-simple")
 
-    sugerencia = analizar_batallas(batallas, modos_juego, objetivo)
+    sugerencia = analizar_batallas(batallas, modos_juego, objetivo, tipoSugerencia, analisisMazo, nivelAnalisis)
     return jsonify({"sugerencia": sugerencia})
 
 

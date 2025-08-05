@@ -43,29 +43,34 @@ export default function InputTag() {
                             }
                         }}
                     >
-                        Configuraciones
+                        Panel de análisis
                     </button>
          
 
                 <dialog id="dialog-configuraciones">
+
+                    <div id="btn-cerrar">
+                        <button
+                            type="button" 
+                            className='btn btn-danger' 
+                            onClick={() => {
+                                const dialog = document.getElementById('dialog-configuraciones') as HTMLDialogElement | null;
+                                if (dialog && dialog.open) {
+                                    dialog.close();
+                                }
+                            }}
+                            >
+                            X
+                        </button>
+                    </div>
+                    
                         
                     <Control
                             seleccionados={seleccionados}
                             setSeleccionados={setSeleccionados}      
                         />
 
-                    <button 
-                        type="button" 
-                        className='btn btn-danger' 
-                        onClick={() => {
-                            const dialog = document.getElementById('dialog-configuraciones') as HTMLDialogElement | null;
-                            if (dialog && dialog.open) {
-                                dialog.close();
-                            }
-                        }}
-                        >
-                        Cerrar
-                    </button>
+                    
 
                 </dialog>
                 

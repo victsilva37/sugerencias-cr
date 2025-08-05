@@ -1,41 +1,196 @@
-#modos-content {
-     background-color: rgb(54, 77, 44);
-     display: flex;
-     justify-content: center;
-     gap: 60px;
- }
 
-#modos-content h6 {
-     font-family: 'Supercell Magic';
-     color: rgb(0, 0, 0);
- }
 
- #modos-content div #modos-checkbox {
-     display: flex;
-     justify-content: center;
-     align-items: center;
-     gap: 10px;
-     width: 100%;
-     height: 100%;
- }
 
- #modos-content div #modos-checkbox label {
-     color: white;
-     text-align: center;
-     margin: auto;
- }
+/*SECCIÓN MODOS DE JUEGO*/
 
-#objetivo-content{
-     width: 100%;
-     display: flex;
-     justify-content: start;
-     align-items: center;
-     flex-direction: column;
-     gap: 10px
-}
+    #form-control #modos-content{
+        background-color: brown;
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        gap: 30px;
+        margin-top: 10px;
+        padding: 10px;
+        border-radius: 10px;
+    }
 
-#objetivo-content h6{
-     font-family: 'Supercell Magic';
-     color: rgb(0, 0, 0);
-}
+    #form-control #modos-content h6{
+        color: rgb(233, 233, 233);
+        font-size: 15px;
+        font-family: 'Supercell Magic';
+        font-weight: bold;
+        text-align: center;
+    }
 
+    #form-control #modos-content #modos-checkbox{
+        background-color: rgb(182, 179, 177);
+        height: auto;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        padding: 10px;
+        width: 200px;
+        border-radius: 5px;
+    }
+
+    #form-control #modos-content #modos-checkbox label{
+        color: white;
+        font-family: 'Supercell Magic';
+        font-size: 12px;
+    }
+
+
+/*SECCIÓN DE OBJETIVO DEL ANÁLISIS*/
+
+    #objetivo-content{
+        background-color: brown;
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        gap: 10px;
+        margin-top: 10px;
+        padding: 10px;
+        border-radius: 10px;
+    }
+
+        /*Título de la sección*/
+        #objetivo-content h6{
+            color: white;
+            font-size: 15px;
+            font-family: 'Supercell Magic';
+            font-weight: bold;
+            text-align: center;
+        }
+
+        /*Select de objetivo*/
+        #objetivo-content select{
+            background-color: rgb(182, 179, 177);
+            color: white;
+            font-family: 'Supercell Magic';
+            font-size: 12px;
+            padding: 10px;
+            border-radius: 5px;
+            width: 200px;
+            border: none;
+        }
+
+
+/*SECCIÓN DE SUGERENCIAS TÁCTICAS*/
+
+    #tacticas-content{
+        background-color: brown;
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        gap: 35px;
+        margin-top: 10px;
+        padding: 10px;
+        border-radius: 10px;
+    }
+
+        #tacticas-content h6{
+            color: white;
+            font-size: 14px;
+            font-family: 'Supercell Magic';
+            font-weight: bold;
+            text-align: center;
+        }
+
+        #tacticas-content select{
+            background-color: rgb(182, 179, 177);
+            color: white;
+            font-family: 'Supercell Magic';
+            font-size: 12px;
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+            width: 200px;
+        }
+
+
+/*SECCIÓN ANÁLISIS DEL MAZO ACTUAL*/
+
+    #mazo-content{
+        background-color: brown;
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        gap: 55px;
+        margin-top: 10px;
+        padding: 10px;
+        border-radius: 10px;
+    }
+
+        
+        #mazo-content h6{
+            color: white;
+            font-size: 14px;
+            font-family: 'Supercell Magic';
+            font-weight: bold;
+            text-align: center;
+        }
+
+        #mazo-content select{
+            background-color: rgb(182, 179, 177);
+            color: white;
+            font-family: 'Supercell Magic';
+            font-size: 12px;
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+            width: 200px;
+        }
+
+
+/*SECCIÓN NIVEL DE ANÁLISIS*/
+
+    #nvl-analisis-content{
+        background-color: brown;
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        gap: 55px;
+        margin-top: 10px;
+        padding: 10px;
+        border-radius: 10px;
+    }
+
+        
+        #nvl-analisis-content h6{
+            color: white;
+            font-size: 14px;
+            font-family: 'Supercell Magic';
+            font-weight: bold;
+            text-align: center;
+        }
+
+        #nvl-analisis-content select{
+            background-color: rgb(182, 179, 177);
+            color: white;
+            font-family: 'Supercell Magic';
+            font-size: 12px;
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+            width: 200px;
+        }
+
+
+/*SECCIÓN BOTÓN ANALIZAR*/
+
+    #form-control button{
+        margin-top: 10px;
+        width: 40%;
+    }
+
+
+/*SECCIÓN SUGERENCIA*/
+
+    .sugerencia p{
+        margin-top: 10px;
+        font-family: 'Supercell Magic';
+        font-size: 12px;
+        font-weight: 100;
+    }
+
+    
