@@ -1,5 +1,10 @@
-import './styles_control.css';
-import useControl from './func_control';
+//Importar CSS
+import './stylesControl.css';
+
+//Importar kook personalizado
+import useControl from './useControl';
+
+//Importar propiedades
 import { ControlProps } from '../../../../interfaces/ControlProps';
 import { useEffect } from 'react';
 
@@ -11,14 +16,15 @@ export default function Control({ seleccionados, setSeleccionados }: ControlProp
      // Obtener tipos únicos de modos de juego para los checkboxes
     const tiposDeJuego = [...new Set(batallas.map(b => b.type))];
 
-    // Marcar todos los checkboxes por defecto cuando se cargan los tipos y no hay seleccionados aún
+
+        // Marcar todos los checkboxes por defecto cuando se cargan los tipos y no hay seleccionados aún
     useEffect(() => {
         if (tiposDeJuego.length > 0 && seleccionados.length === 0) {
             setSeleccionados(tiposDeJuego);
         }
     }, [tiposDeJuego, seleccionados.length, setSeleccionados]);
 
-    // Manejo del cambio en los checkboxes
+    //Manejo del cambio en los checkboxes
     const handleCheckboxChange = (tipo: string) => {
         if (seleccionados.includes(tipo)) {
             setSeleccionados(seleccionados.filter(m => m !== tipo));
@@ -35,12 +41,19 @@ export default function Control({ seleccionados, setSeleccionados }: ControlProp
                 {/* SECCIÓN DE MODOS DE JUEGO */}
 
                     <div id='modos-content'>
+
+                        {/*Título*/}
                         <h6>Modos de juego</h6>
-                        <br />
+
                         {tiposDeJuego.map((tipo) => (
                             <div key={tipo}>
+                                {/*Checkboxs modos de juego*/}
                                 <div id='modos-checkbox'>
+
+                                    {/*Label modos de juego*/}
                                     <label>{tipo}</label>
+
+                                    {/*Input checkbox modos de juego*/}
                                     <input
                                         value={tipo}
                                         type="checkbox"
@@ -115,21 +128,23 @@ export default function Control({ seleccionados, setSeleccionados }: ControlProp
                     </div>
                         
                     
-                {/* SECCIÓN BOTÓN ANALIZAR */}
+                {/* SECCIÓN BOTÓN MOSTRAR SUGERENCIA */}
 
-                    <button type="button" onClick={analizarBatallas}>
-                        Analizar
+                    <button type="button" className='btn btn-primary' onClick={analizarBatallas}>
+                        Mostrar sugerencia
                     </button>
-
-               
 
             </form>
 
-            {sugerencia && (
-                <div className="sugerencia">
-                    <p><strong>Sugerencia:</strong> {sugerencia}</p>
-                </div>
-            )}
+
+                {/*SECCIÓN SUGERENCIA*/}
+
+                    {sugerencia && (
+                        <div className="sugerencia">
+                            <p><strong>Sugerencia:</strong> {sugerencia}</p>
+                        </div>
+                    )}
+
         </div>
     );
 }

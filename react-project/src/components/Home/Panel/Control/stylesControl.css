@@ -14,6 +14,7 @@
         border-radius: 10px;
     }
 
+    /*Título*/
     #form-control #modos-content h6{
         color: rgb(233, 233, 233);
         font-size: 15px;
@@ -22,22 +23,46 @@
         text-align: center;
     }
 
+    @media (max-width: 1200px){
+        #form-control #modos-content h6{
+            font-size:12px;
+        }
+    }
+
+    /*Checkboxs modos de juego*/
     #form-control #modos-content #modos-checkbox{
         background-color: rgb(182, 179, 177);
         height: auto;
         display: flex;
-        justify-content: space-around;
+        justify-content: center;
         align-items: center;
+        gap: 10px;
         padding: 10px;
         width: 200px;
         border-radius: 5px;
     }
 
+    @media (max-width: 1200px){
+        #form-control #modos-content #modos-checkbox{
+            width: 150px;
+        }
+    }
+
+    /*Label modos de juego*/
     #form-control #modos-content #modos-checkbox label{
         color: white;
         font-family: 'Supercell Magic';
         font-size: 12px;
     }
+
+    @media (max-width: 1200px){
+        #form-control #modos-content #modos-checkbox label{
+            font-size: 10px;
+        }
+    }
+
+    /*Input checkbox modos de juego*/
+    /*sin contenido*/
 
 
 /*SECCIÓN DE OBJETIVO DEL ANÁLISIS*/
@@ -45,7 +70,7 @@
     #objetivo-content{
         background-color: brown;
         display: flex;
-        justify-content: start;
+        justify-content: center;
         align-items: center;
         gap: 10px;
         margin-top: 10px;
@@ -60,6 +85,12 @@
             font-family: 'Supercell Magic';
             font-weight: bold;
             text-align: center;
+        }
+
+        @media (max-width: 1200px){
+            #form-control #objetivo-content h6{
+                font-size:12px;
+            }
         }
 
         /*Select de objetivo*/
@@ -80,9 +111,9 @@
     #tacticas-content{
         background-color: brown;
         display: flex;
-        justify-content: start;
+        justify-content: center;
         align-items: center;
-        gap: 35px;
+        gap: 10px;
         margin-top: 10px;
         padding: 10px;
         border-radius: 10px;
@@ -94,6 +125,12 @@
             font-family: 'Supercell Magic';
             font-weight: bold;
             text-align: center;
+        }
+
+        @media (max-width: 1200px){
+            #form-control #tacticas-content h6{
+                font-size:12px;
+            }
         }
 
         #tacticas-content select{
@@ -113,9 +150,9 @@
     #mazo-content{
         background-color: brown;
         display: flex;
-        justify-content: start;
+        justify-content: center;
         align-items: center;
-        gap: 55px;
+        gap: 10px;
         margin-top: 10px;
         padding: 10px;
         border-radius: 10px;
@@ -128,6 +165,12 @@
             font-family: 'Supercell Magic';
             font-weight: bold;
             text-align: center;
+        }
+
+        @media (max-width: 1200px){
+            #form-control #mazo-content h6{
+                font-size:12px;
+            }
         }
 
         #mazo-content select{
@@ -147,9 +190,9 @@
     #nvl-analisis-content{
         background-color: brown;
         display: flex;
-        justify-content: start;
+        justify-content: center;
         align-items: center;
-        gap: 55px;
+        gap: 10px;
         margin-top: 10px;
         padding: 10px;
         border-radius: 10px;
@@ -164,6 +207,12 @@
             text-align: center;
         }
 
+        @media (max-width: 1200px){
+            #form-control #nvl-analisis-content h6{
+                font-size:12px;
+            }
+        }
+
         #nvl-analisis-content select{
             background-color: rgb(182, 179, 177);
             color: white;
@@ -176,11 +225,13 @@
         }
 
 
-/*SECCIÓN BOTÓN ANALIZAR*/
+/*SECCIÓN BOTÓN MOSTRAR SUGERENCIA */
 
     #form-control button{
         margin-top: 10px;
         width: 40%;
+        font-family: 'Supercell Magic';
+        font-size: 12px;
     }
 
 

@@ -11,6 +11,7 @@ export default function Banner() {
     return (
     
         <div>
+        
             {/* Contenedor principal */}
             <div id="banner-container" className="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
                 

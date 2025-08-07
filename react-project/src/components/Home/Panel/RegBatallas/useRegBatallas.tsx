@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Batalla } from "../../../../interfaces/Batalla";
 
-export default function useBatallas() {
+export default function useRegBatallas() {
     const [batallas, setBatallas] = useState<Batalla[]>([]);
     const [loading, setLoading] = useState(true);
     

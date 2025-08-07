@@ -1,0 +1,45 @@
+/* SECCIÓN REGISTRO DE BATALLAS */
+
+    /*Component: RegBatallas*/
+    #batallas-main-container{
+        margin-top: 20px
+    }
+
+
+/* SECCIÓN PANEL */
+
+    #panel-content{
+        background-color: white;
+        padding: 10px;
+    }
+
+        /*Botón panel de análisis*/
+        #panel-content #btn-panel-analisis{
+            background-color: green;
+            font-family: 'Supercell Magic';
+            font-size: 12px;
+        }
+
+        /*Botón panel de análisis 'hover'*/
+        #panel-content #btn-panel-analisis:hover{
+            opacity: 0.7;
+        }
+
+        /*Botón panel de análisis 'active'*/
+        #panel-content #btn-panel-analisis:active{
+            background-color: rgb(16, 194, 16);
+        }
+
+        /* Modal de análisis */
+
+            /*Botón cerrar*/
+            #dialog-configuraciones #btn-cerrar{
+                display: flex;
+                justify-content: end;
+                font-family: 'Supercell Magic';
+                font-size: 12px;
+                border: none;
+            }
+
+            /* Component: Control */
+            /*sin contenido*/

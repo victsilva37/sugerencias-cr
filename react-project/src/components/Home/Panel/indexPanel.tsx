@@ -1,6 +1,12 @@
+//Importar CSS
+import './stylesPanel.css'
+
+//Importar componentes hijos
+import Control from "./Control/indexControl";
+import RegBatallas from "./RegBatallas/indexRegBatallas";
+
+//Importar hooks de estados
 import { useState } from "react";
-import Control from "./Control/index_control";
-import RegBatallas from "./RegBatallas/index_batallas";
 
 export default function Panel(){
 
@@ -9,12 +15,28 @@ export default function Panel(){
     return(
 
         <div>
-            {/* SECCIÓN PANEL */}
+            
+           
+            {/* SECCIÓN REGISTRO DE BATALLAS */}
+
+                <div id="batallas-main-container">
+
+                    {/* Component: RegBatallas */}
+                    <RegBatallas
+                        modosSeleccionados={seleccionados}
+                    />
+                </div>
+
+
+
+             {/* SECCIÓN PANEL */}
 
                 <div id="panel-content">
+
+                    {/*Botón panel de análisis*/}
                     <button
                         type="button"
-                        id='btn-configuraciones'
+                        id='btn-panel-analisis'
                         className="btn btn-primary"
                         onClick={() => {
                             const dialog = document.getElementById('dialog-configuraciones') as HTMLDialogElement | null;
@@ -24,7 +46,10 @@ export default function Panel(){
                             Panel de análisis
                     </button>
 
+                    {/* Modal de análisis */}
                     <dialog id="dialog-configuraciones">
+
+                        {/*Botón cerrar*/}
                         <div id="btn-cerrar">
                             <button
                                 type="button"
@@ -38,6 +63,7 @@ export default function Panel(){
                             </button>
                         </div>
 
+                        {/* Component: Control */}
                         <Control
                             seleccionados={seleccionados}
                             setSeleccionados={setSeleccionados}
@@ -45,15 +71,6 @@ export default function Panel(){
                         
                     </dialog>
                 
-                </div>
-
-
-            {/* SECCIÓN REGISTRO DE BATALLAS */}
-
-                <div id="batallas-main-container">
-                    <RegBatallas
-                        modosSeleccionados={seleccionados}
-                    />
                 </div>
             
         </div>

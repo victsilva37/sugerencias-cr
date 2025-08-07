@@ -56,8 +56,8 @@ def get_battlelog(player_tag):
 def analizar():
     data = request.get_json()
     batallas = data.get("batallas", [])
-    modos_juego = data.get("modos_juego", [])  # Esto viene del panel de control
-    objetivo = data.get("objetivo", "mejorar-ataque")  # Puedes poner un valor por defecto
+    modos_juego = data.get("modos_juego", [])
+    objetivo = data.get("objetivo", "mejorar-ataque")
     tipoSugerencia = data.get("tipoSugerencia", "tactica")
     analisisMazo = data.get("analisisMazo", "el-mas-usado")
     nivelAnalisis = data.get("nivelAnalisis", "lenguaje-simple")

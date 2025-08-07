@@ -1,7 +1,7 @@
-import Banner from "../components/Home/Banner/index_banner";
-import InputTag from "../components/Home/InputTag/index_input_tag";
+import Banner from "../components/Home/Banner/indexBanner";
+import InputTag from "../components/Home/InputTag/indexInputTag";
 import Menu from "../layouts/Menu/index_menu";
-import Panel from "../components/Home/Panel/index_panel";
+import Panel from "../components/Home/Panel/indexPanel";
 
 
 export default function Home() {

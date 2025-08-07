@@ -7,27 +7,24 @@ load_dotenv()  # Carga las variables de entorno desde .env
 
 GROQ_API_KEY = os.getenv("GROQ_API_KEY")
 
-def crear_prompt(batallas, modos_juego, objetivo, tipoSugerencia, analisisMazo, nivelAnalisis):
-    resumen = f"Tengo {len(batallas)} partidas recientes en Clash Royale.\n"
+def crear_prompt(batallas_filtradas, modos_juego, objetivo, tipoSugerencia, analisisMazo, nivelAnalisis):
+    resumen = f"Tengo {len(batallas_filtradas)} partidas recientes en Clash Royale.\n"
     resumen += f"Modos seleccionados: {', '.join(modos_juego)}.\n"
     resumen += f"Objetivo del análisis: {objetivo}.\n"
-    resumen += f"Tipo de segerencia: {tipoSugerencia}.\n"
+    resumen += f"Tipo de sugerencia: {tipoSugerencia}.\n"
     resumen += f"Análisis de mazos: {analisisMazo}.\n"
-    resumen += f"Nivel de análisis: {nivelAnalisis}"
+    resumen += f"Nivel de análisis: {nivelAnalisis}\n"
     
     victorias = 0
     derrotas = 0
 
-    for i, batalla in enumerate(batallas, 1):
-        tipo = batalla.get('type', 'Desconocido').capitalize()
+    for i, batalla in enumerate(batallas_filtradas, 1):
+        tipo = batalla.get('type', 'Desconocido')
         mi_nombre = batalla.get('team', [{}])[0].get('name', 'Yo')
         oponente = batalla.get('opponent', [{}])[0].get('name', 'Oponente')
         mis_coronas = batalla.get('team', [{}])[0].get('crowns', 0)
         coronas_opp = batalla.get('opponent', [{}])[0].get('crowns', 0)
-        # cartas = batalla.get("team", [{}])[0].get("cards", [])
         nombres_cartas = [carta.get("name") for carta in batalla.get("team", [{}])[0].get("cards", [])]
-
-
 
         resultado = "Victoria" if mis_coronas > coronas_opp else "Derrota"
         if resultado == "Victoria":
@@ -38,13 +35,16 @@ def crear_prompt(batallas, modos_juego, objetivo, tipoSugerencia, analisisMazo, 
         resumen += (
             f"Partida {i} - Tipo: {tipo}, Resultado: {resultado}, "
             f"{mi_nombre} {mis_coronas} - {coronas_opp} {oponente}\n"
-            f"Cartas usadas: {nombres_cartas}"
+            f"Cartas usadas: {nombres_cartas}\n"
         )
 
     resumen += f"\nResumen general: {victorias} victorias y {derrotas} derrotas.\n"
     resumen += "Dame UNA sugerencia concreta de mejora en 50 caracteres máximo."
-    print(resumen)  # Para depuración, puedes comentar esta línea si no es necesaria
-    print("-----")  # Separador para facilitar la lectura en los logs
+
+    # ✅ Debug
+    print(resumen)
+    print("-----")
+    
     return resumen
 
 
@@ -52,7 +52,14 @@ def analizar_batallas(batallas, modos_juego, objetivo, tipoSugerencia, analisisM
     if not batallas:
         return {"error": "No se encontraron batallas para analizar."}
 
-    prompt = crear_prompt(batallas, modos_juego, objetivo, tipoSugerencia, analisisMazo, nivelAnalisis)
+    # 🔥 Normalizamos ambos a minúsculas para hacer coincidencias exactas
+    modos_juego_normalizados = [m.lower() for m in modos_juego]
+    batallas_filtradas = [b for b in batallas if b.get("type", "").lower() in modos_juego_normalizados]
+
+    if not batallas_filtradas:
+        return {"error": "No hay batallas que coincidan con los modos seleccionados."}
+
+    prompt = crear_prompt(batallas_filtradas, modos_juego, objetivo, tipoSugerencia, analisisMazo, nivelAnalisis)
 
     url = "https://api.groq.com/openai/v1/chat/completions"
     headers = {
@@ -61,7 +68,7 @@ def analizar_batallas(batallas, modos_juego, objetivo, tipoSugerencia, analisisM
     }
 
     body = {
-        "model": "meta-llama/llama-4-scout-17b-16e-instruct",  # Puedes probar otros modelos si deseas
+        "model": "meta-llama/llama-4-scout-17b-16e-instruct",
         "messages": [
             {
                 "role": "system",
