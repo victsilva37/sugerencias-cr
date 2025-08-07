@@ -1,3 +1,4 @@
+/*Contenedor principal*/
 #index-menu-container {
   background-color: #4067B2;
   margin: 0;
@@ -15,8 +16,10 @@
   z-index: 1000;
 }
 
-#index-menu-container img{
-  width: 150px;
-  height: 100px;
-  object-fit: contain;
-}
+/* SECCIÓN LOGO APP*/
+
+  #index-menu-container img{
+    width: 150px;
+    height: 100px;
+    object-fit: contain;
+  }
