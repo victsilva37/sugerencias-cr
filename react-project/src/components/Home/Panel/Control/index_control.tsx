@@ -1,18 +1,27 @@
 import './styles_control.css';
 import useControl from './func_control';
-import { ControlProps } from '../../../interfaces/ControlProps';
+import { ControlProps } from '../../../../interfaces/ControlProps';
+import { useEffect } from 'react';
 
 export default function Control({ seleccionados, setSeleccionados }: ControlProps) {
-    const { batallas, analizarBatallas, sugerencia, objetivo, setObjetivo, tipoSugerencia, setTipoSugerencia, analisisMazo,
+    const {batallas, analizarBatallas,  sugerencia,  objetivo, setObjetivo, tipoSugerencia, setTipoSugerencia, analisisMazo,
         setAnalisisMazo, nivelAnalisis,
         setNivelAnalisis } = useControl();
 
-    // Obtener tipos únicos de modos de juego para los checkboxes
+     // Obtener tipos únicos de modos de juego para los checkboxes
     const tiposDeJuego = [...new Set(batallas.map(b => b.type))];
 
-    const handleCheck = (tipo: string) => {
+    // Marcar todos los checkboxes por defecto cuando se cargan los tipos y no hay seleccionados aún
+    useEffect(() => {
+        if (tiposDeJuego.length > 0 && seleccionados.length === 0) {
+            setSeleccionados(tiposDeJuego);
+        }
+    }, [tiposDeJuego, seleccionados.length, setSeleccionados]);
+
+    // Manejo del cambio en los checkboxes
+    const handleCheckboxChange = (tipo: string) => {
         if (seleccionados.includes(tipo)) {
-            setSeleccionados(seleccionados.filter(t => t !== tipo));
+            setSeleccionados(seleccionados.filter(m => m !== tipo));
         } else {
             setSeleccionados([...seleccionados, tipo]);
         }
@@ -26,26 +35,23 @@ export default function Control({ seleccionados, setSeleccionados }: ControlProp
                 {/* SECCIÓN DE MODOS DE JUEGO */}
 
                     <div id='modos-content'>
-
                         <h6>Modos de juego</h6>
                         <br />
-                        {tiposDeJuego.map(tipo => (
+                        {tiposDeJuego.map((tipo) => (
                             <div key={tipo}>
                                 <div id='modos-checkbox'>
                                     <label>{tipo}</label>
                                     <input
                                         value={tipo}
                                         type="checkbox"
-                                        id={`modo-${tipo}`}
                                         checked={seleccionados.includes(tipo)}
-                                        onChange={() => handleCheck(tipo)}
+                                        onChange={() => handleCheckboxChange(tipo)}
                                     />
                                 </div>
-                               
                             </div>
                         ))}
+      
                     </div>
-        
 
 
 

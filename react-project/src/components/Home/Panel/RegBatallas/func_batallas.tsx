@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Batalla } from "../../../interfaces/Batalla";
+import { Batalla } from "../../../../interfaces/Batalla";
 
 export default function useBatallas() {
     const [batallas, setBatallas] = useState<Batalla[]>([]);

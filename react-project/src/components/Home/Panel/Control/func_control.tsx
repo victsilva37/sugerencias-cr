@@ -1,15 +1,21 @@
 import { useEffect, useState } from "react";
-import { Batalla } from "../../../interfaces/Batalla";
+import { Batalla } from "../../../../interfaces/Batalla";
+
+// Función auxiliar para obtener tipos únicos de juego desde las batallas
+export function obtenerTiposDeJuego(batallas: Batalla[]): string[] {
+    return [...new Set(batallas.map(b => b.type))];
+}
 
 export default function useControl() {
     const [batallas, setBatallas] = useState<Batalla[]>([]);
-    const [seleccionados, setSeleccionados] = useState<string[]>([]);
+    const [seleccionados, setSeleccionados] = useState<string[]>([]); // Estados de modos seleccionados
     const [objetivo, setObjetivo] = useState<string>("mejorar-ataque");
     const [tipoSugerencia, setTipoSugerencia] = useState<string>("tactica");
     const [analisisMazo, setAnalisisMazo] = useState<string>("el-mas-usado");
     const [nivelAnalisis, setNivelAnalisis] = useState<string>("lenguaje-simple");
     const [sugerencia, setSugerencia] = useState<string | null>(null);
 
+    // Carga batallas desde backend
     useEffect(() => {
         const tag = localStorage.getItem("playerTag");
         if (!tag) return;
@@ -28,17 +34,23 @@ export default function useControl() {
             });
     }, []);
 
-    // Auto-set seleccionados con todos los tipos al cargar batallas
+    // Establece modos seleccionados por defecto cuando cambian las batallas
     useEffect(() => {
         if (batallas.length > 0 && seleccionados.length === 0) {
-            const tipos = Array.from(new Set(batallas.map(b => b.type)));
-            setSeleccionados(tipos);
+            const modos = obtenerTiposDeJuego(batallas);
+            setSeleccionados(modos);
         }
-    }, [batallas]);
+    }, [batallas, seleccionados.length]);
 
+    // Función que analiza batallas según filtros y actualiza sugerencia
     const analizarBatallas = async () => {
         if (batallas.length === 0) {
             setSugerencia("⚠️ No hay batallas para analizar.");
+            return;
+        }
+
+        if (seleccionados.length === 0) {
+            setSugerencia("⚠️ Debes seleccionar al menos un modo de juego.");
             return;
         }
 

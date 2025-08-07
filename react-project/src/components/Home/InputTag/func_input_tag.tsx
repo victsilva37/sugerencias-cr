@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 export default function useInputTag() {
@@ -6,7 +6,6 @@ export default function useInputTag() {
     const navigate = useNavigate();
     
 
-    var habilitarBotonConf = false;
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -23,7 +22,6 @@ export default function useInputTag() {
             const data = await res.json();
             alert(`Jugador ${data.name} encontrado con éxito!`);
             localStorage.setItem("playerTag", cleanedTag); 
-            habilitarBotonConf = true;
             navigate("/");
             
         } catch (error) {
@@ -37,7 +35,6 @@ export default function useInputTag() {
     return {
         tag,
         setTag,
-        habilitarBotonConf,
         handleSubmit
     }
 }

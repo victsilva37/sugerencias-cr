@@ -1,11 +1,11 @@
-import { useState } from "react";
 import Banner from "../components/Home/Banner/index_banner";
-import Batallas from "../components/Home/Batallas/index_batallas";
 import InputTag from "../components/Home/InputTag/index_input_tag";
 import Menu from "../layouts/Menu/index_menu";
+import Panel from "../components/Home/Panel/index_panel";
+
 
 export default function Home() {
-  const [seleccionados, setSeleccionados] = useState<string[]>([]);
+
   return (
     <div>
 
@@ -16,15 +16,12 @@ export default function Home() {
         <Banner/>
 
         {/* Component: InputTag */}
-        <InputTag/>
+        <InputTag />
 
-        <Batallas
-                modosSeleccionados={seleccionados}
-          />
+        {/* Component: Panel*/}
+        <Panel/>
 
-        
-
-
+  
     </div>
     
   );
