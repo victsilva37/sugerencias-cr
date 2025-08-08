@@ -60,20 +60,28 @@ Aplicación web que analiza las batallas recientes de un jugador de Clash Royale
 
     **Frontend (React)**
 
-        ```bash
-        npm install
+            ```
+            npm install
 
 
-    **Backend (Flask) **
+    **Backend (Flask)**
 
         ```bash
         pip install flask
 
 
-    * Ejecutar frontend
+* Ejecución
+
+    **Frontend (React)**
 
         ```bash
         npm run dev
+
+
+    **Backend (Flask)**
+
+        ```bash
+        python app.py
 
 
 
