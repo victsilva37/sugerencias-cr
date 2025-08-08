@@ -28,60 +28,7 @@ Aplicación web que analiza las batallas recientes de un jugador de Clash Royale
  
 (diagrama de carpetas)
 
-
-### Entorno de desarrollo
-
-##### Requisitos previos
-- Tener Python 3.10+
-- Tener Node.js y npm para ejecutar React.
-
-#### Pasos para la ejecución
-
-
-* Clonar el repositorio.
-
-    ```bash 
-    git clone https://github.com/victsilva37/sugerencias-cr.git
-
-
-* Dirigirse los directorios correspondientes.
-
-    **Frontend (React)**
-
-        ```bash
-        cd react-project
-
-    **Backend (Flask) **
-
-        ```bash
-        cd flask-project
-
-* Instalar dependencias
-
-    **Frontend (React)**
-
-            ```
-            npm install
-
-
-    **Backend (Flask)**
-
-        ```bash
-        pip install flask
-
-
-* Ejecución
-
-    **Frontend (React)**
-
-        ```bash
-        npm run dev
-
-
-    **Backend (Flask)**
-
-        ```bash
-        python app.py
+### Demostración
 
 
 
