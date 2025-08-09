@@ -24,5 +24,7 @@ Aplicación web que analiza las batallas recientes de un jugador de Clash Royale
 
 ### Demostración
 
+[Video demo](https://drive.google.com/file/d/1Pvmk85dEiSEjyvLMcs_G88VuOXCVrMDQ/view?usp=sharing)
+
 
 

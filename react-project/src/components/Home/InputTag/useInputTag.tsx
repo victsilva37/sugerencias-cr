@@ -31,6 +31,7 @@ export default function useInputTag() {
                 alert(`Jugador ${data.name} encontrado con éxito!`);
                 localStorage.setItem("playerTag", cleanedTag); 
                 navigate("/");
+                window.location.reload();
                 
             } catch (error) {
                 console.error(error);
