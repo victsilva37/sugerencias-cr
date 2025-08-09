@@ -20,13 +20,7 @@ Aplicación web que analiza las batallas recientes de un jugador de Clash Royale
 
 ### Estructura del proyecto
 
-**Frontend**
-
-(diagrama de carpetas)
-
-**Backend**
- 
-(diagrama de carpetas)
+![GitDiagram](estructura_proyecto.png)
 
 ### Demostración
 
